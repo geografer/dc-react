@@ -5,14 +5,16 @@ import { Base } from './Base';
 class DataTable extends Component {
   static propTypes = {
     columns: PropTypes.array.isRequired,
-    showGroups: PropTypes.bool
+    showGroups: PropTypes.bool,
+    beginSlice: PropTypes.number,
+    endSlice: PropTypes.number
   };
 
   loadChart = (container) => {
     const chart = dc.dataTable(container);
     const helper = this.props.chartHelper(this, chart, false);
     helper.setContextProperties('dimension')
-          .setProperties('columns', 'group', 'showGroups');
+          .setProperties('columns', 'group', 'showGroups', 'beginSlice', 'endSlice');
 
     chart.render();
   };
